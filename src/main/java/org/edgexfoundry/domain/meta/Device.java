@@ -31,7 +31,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Device extends DescribedObject implements Asset {
 
   // TODO - someday have a naming service for all types (Device, Service,
-  // Profile, Addressable, ValueDescriptor, etc.). This naming service makes
+  // Profile, ValueDescriptor, etc.). This naming service makes
   // sure the name is unique - potentially even across EdgeX instances in a
   // cluster - and can even generate a name with some help from the
   // originating service. Need to look into how Docker provides names to
@@ -48,10 +48,8 @@ public class Device extends DescribedObject implements Asset {
   // operational state - either enabled or disabled (set by humans or systems)
   private OperatingState operatingState;
 
-  // address (MQTT topic, HTTP address, serial bus, etc.) for the device
-  @DBRef
-  private Addressable addressable;
-
+  private ProtocolDescription protocols;
+    
   // time in milliseconds that the device last provided any feedback or
   // responded to any request
   private long lastConnected;
@@ -127,15 +125,13 @@ public class Device extends DescribedObject implements Asset {
     this.lastReported = lastReported;
 
   }
-
-  @Override
-  public Addressable getAddressable() {
-    return this.addressable;
+    
+  public ProtocolDescription getProtocols() {
+    return this.protocols;
   }
 
-  @Override
-  public void setAddressable(Addressable addressable) {
-    this.addressable = addressable;
+  public void setProtocols(ProtocolDescription protocols) {
+    this.protocols = protocols;
   }
 
   public String[] getLabels() {
@@ -173,7 +169,7 @@ public class Device extends DescribedObject implements Asset {
   @Override
   public String toString() {
     return "Device [name=" + name + ", adminState=" + adminState + ", operatingState="
-        + operatingState + ", addressable=" + addressable + ", lastConnected=" + lastConnected
+        + operatingState + ", protocols=" + protocols + ", lastConnected=" + lastConnected
         + ", lastReported=" + lastReported + ", labels=" + Arrays.toString(labels) + ", location="
         + location + ", service=" + service + ", profile=" + profile + "]";
   }
@@ -181,7 +177,7 @@ public class Device extends DescribedObject implements Asset {
   @Override
   public int hashCode() {
     return new HashCodeBuilder().appendSuper(super.hashCode()).append(name).append(adminState)
-        .append(operatingState).append(addressable).append(lastConnected).append(lastReported)
+        .append(operatingState).append(lastConnected).append(lastReported)
         .append(labels).append(location).append(service).append(profile).toHashCode();
   }
 
@@ -199,8 +195,6 @@ public class Device extends DescribedObject implements Asset {
     if (adminState != other.adminState)
       return false;
     if (operatingState != other.operatingState)
-      return false;
-    if (!objectPropertyMatch(this.addressable, other.addressable))
       return false;
     if (lastConnected != other.lastConnected)
       return false;

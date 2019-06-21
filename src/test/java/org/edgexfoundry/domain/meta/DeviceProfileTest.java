@@ -66,34 +66,34 @@ public class DeviceProfileTest {
 
   @Test
   public void testAddCommand() {
-    assertNull(profile.getCommands());
-    profile.addCommand(command);
-    assertTrue(profile.getCommands().contains(command));
-    assertEquals("Add command failed to preserve collection", 1, profile.getCommands().size());
+    assertNull(profile.getCoreCommands());
+    profile.addCoreCommand(command);
+    assertTrue(profile.getCoreCommands().contains(command));
+    assertEquals("Add command failed to preserve collection", 1, profile.getCoreCommands().size());
   }
 
   @Test
   public void testAddCommandsWhereCommandsNotNull() {
-    profile.setCommands(new ArrayList<Command>());
-    assertNotNull(profile.getCommands());
-    profile.addCommand(command);
-    assertTrue(profile.getCommands().contains(command));
-    assertEquals("Add command failed to preserve collection", 1, profile.getCommands().size());
+    profile.setCoreCommands(new ArrayList<Command>());
+    assertNotNull(profile.getCoreCommands());
+    profile.addCoreCommand(command);
+    assertTrue(profile.getCoreCommands().contains(command));
+    assertEquals("Add command failed to preserve collection", 1, profile.getCoreCommands().size());
   }
 
   @Test
   public void testRemoveCommand() {
-    profile.addCommand(command);
-    assertTrue(profile.getCommands().contains(command));
-    profile.removeCommand(command);
-    assertTrue("Remove command failed to preserve collection", profile.getCommands().isEmpty());
+    profile.addCoreCommand(command);
+    assertTrue(profile.getCoreCommands().contains(command));
+    profile.removeCoreCommand(command);
+    assertTrue("Remove command failed to preserve collection", profile.getCoreCommands().isEmpty());
   }
 
   @Test
   public void testRemoveCommandWithNoCommands() {
-    assertNull(profile.getCommands());
-    profile.removeCommand(command);
-    assertTrue("Remove command failed to preserve collection", profile.getCommands().isEmpty());
+    assertNull(profile.getCoreCommands());
+    profile.removeCoreCommand(command);
+    assertTrue("Remove command failed to preserve collection", profile.getCoreCommands().isEmpty());
   }
 
   @Test
@@ -119,7 +119,7 @@ public class DeviceProfileTest {
 
   @Test
   public void testNotEqualBasedOnNullCommands() {
-    profile2.setCommands(new ArrayList<Command>());
+    profile2.setCoreCommands(new ArrayList<Command>());
     assertFalse("profile with null commands is equal to profile with command list",
         profile.equals(profile2));
   }
@@ -128,7 +128,7 @@ public class DeviceProfileTest {
   public void testNotEqualBasedOnCommandLists() {
     List<Command> commands = new ArrayList<Command>();
     commands.add(command);
-    profile.setCommands(commands);
+    profile.setCoreCommands(commands);
     assertFalse("profiles are equal with different command sets", profile.equals(profile2));
   }
 

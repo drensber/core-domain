@@ -49,12 +49,10 @@ public abstract class Service extends DescribedObject implements Asset {
   @DBRef
   private Addressable addressable;
 
-  @Override
   public Addressable getAddressable() {
     return addressable;
   }
 
-  @Override
   public void setAddressable(Addressable addressable) {
     this.addressable = addressable;
   }

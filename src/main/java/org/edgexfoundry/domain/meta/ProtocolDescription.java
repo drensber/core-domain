@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016-2017 Dell Inc.
+ * Copyright 2019 Beechwoods Software Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -12,35 +12,35 @@
  * the License.
  *
  * @microservice: core-domain library
- * @author: Jim White, Dell
+ * @author: Dave Rensberger, Beechwoods
  * @version: 1.0.0
  *******************************************************************************/
 
 package org.edgexfoundry.domain.meta;
 
-public interface Asset {
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.codehaus.jackson.annotate.JsonAnySetter;
+import org.edgexfoundry.domain.common.BaseObject;
 
-  AdminState getAdminState();
+import java.util.Map;
+import java.util.HashMap;
 
-  void setAdminState(AdminState adminState);
+//@Document
+@SuppressWarnings("serial")
+public class ProtocolDescription {
+    public ProtocolDetails details;
 
-  OperatingState getOperatingState();
+    public static class ProtocolDetails {
+	private Map<String,String> detail_map = new HashMap<>();
+	
+	@JsonAnySetter
+	public void add(String key, String value) {
+	    detail_map.put(key, value);
+	}
 
-  void setOperatingState(OperatingState opState);
-
-  String getDescription();
-
-  void setDescription(String description);
-
-  String getName();
-
-  void setName(String name);
-
-  long getLastConnected();
-
-  void setLastConnected(long lastConnected);
-
-  long getLastReported();
-
-  void setLastReported(long lastReported);
+	public void setDetail_map(String key, String value) {
+	    detail_map.put(key, value);
+	}
+    }
 }
+

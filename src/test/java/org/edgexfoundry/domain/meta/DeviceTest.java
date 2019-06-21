@@ -52,7 +52,6 @@ public class DeviceTest {
     d.setLocation(TEST_LOCATION);
     d.setName(TEST_NAME);
     d.setOperatingState(TEST_OP);
-    d.setAddressable(new Addressable("z", Protocol.HTTP, "b", "c", 0));
     d.setService(new DeviceService());
     d.getService().setName("foo");
     d.setProfile(new DeviceProfile());
@@ -66,7 +65,6 @@ public class DeviceTest {
     d2.setLocation(TEST_LOCATION);
     d2.setName(TEST_NAME);
     d2.setOperatingState(TEST_OP);
-    d2.setAddressable(new Addressable("z", Protocol.HTTP, "b", "c", 0));
     d2.setService(new DeviceService());
     d2.getService().setName("foo");
     d2.setProfile(new DeviceProfile());
@@ -105,26 +103,6 @@ public class DeviceTest {
   public void testEqualWithDifferentOpState() {
     d2.setOperatingState(OperatingState.DISABLED);
     assertFalse("Devices with different op states values are equal", d.equals(d2));
-  }
-
-  @Test
-  public void testEqualsWithBothAddressableNull() {
-    d.setAddressable(null);
-    d2.setAddressable(null);
-    assertTrue("Devices with null addressables are not equal", d.equals(d2));
-  }
-
-  @Test
-  public void testEqualWithOneNonNullAddressable() {
-    d.setAddressable(null);
-    assertFalse("Devices with null addressable are equal to device with non null addressable",
-        d.equals(d2));
-  }
-
-  @Test
-  public void testEqualWithDifferentAddressable() {
-    d.setAddressable(new Addressable("a", Protocol.HTTP, "b", "c", 0));
-    assertFalse("Devices with different addressables are equal", d.equals(d2));
   }
 
   @Test

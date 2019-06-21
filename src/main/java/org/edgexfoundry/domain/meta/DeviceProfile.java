@@ -55,12 +55,12 @@ public class DeviceProfile extends DescribedObject implements Serializable {
 
   // device service used object actions that are optionally used to map
   // commands to objects of devices of this profile type
-  private List<ProfileResource> resources;
+  private List<ProfileResource> deviceCommands;
 
   // list of commands to get/put information from the associated devices of
   // this profile type
   @DBRef
-  private List<Command> commands;
+  private List<Command> coreCommands;
 
   public String getName() {
     return name;
@@ -110,31 +110,31 @@ public class DeviceProfile extends DescribedObject implements Serializable {
     this.deviceResources = deviceResources;
   }
 
-  public List<Command> getCommands() {
-    return commands;
+  public List<Command> getCoreCommands() {  
+    return coreCommands;
   }
 
-  public void setCommands(List<Command> commands) {
-    this.commands = commands;
+  public void setCoreCommands(List<Command> coreCommands) {
+    this.coreCommands = coreCommands;
   }
 
-  public void addCommand(Command command) {
-    if (this.commands == null)
-      this.commands = new ArrayList<>();
-    this.commands.add(command);
+  public void addCoreCommand(Command coreCommand) {
+    if (this.coreCommands == null)
+      this.coreCommands = new ArrayList<>();
+    this.coreCommands.add(coreCommand);
   }
 
-  public boolean removeCommand(Command command) {
-    if (this.commands == null)
-      this.commands = new ArrayList<>();
-    return this.commands.remove(command);
+  public boolean removeCoreCommand(Command coreCommand) {
+    if (this.coreCommands == null)
+      this.coreCommands = new ArrayList<>();
+    return this.coreCommands.remove(coreCommand);
   }
 
   @Override
   public int hashCode() {
-    return new HashCodeBuilder().appendSuper(super.hashCode()).append(commands)
+    return new HashCodeBuilder().appendSuper(super.hashCode()).append(coreCommands)
         .append(Arrays.hashCode(labels)).append(manufacturer).append(model).append(name)
-        .append(objects).append(resources).toHashCode();
+        .append(objects).append(deviceCommands).toHashCode();
   }
 
   @Override
@@ -146,7 +146,7 @@ public class DeviceProfile extends DescribedObject implements Serializable {
   }
 
   private boolean propertyMatch(DeviceProfile other) {
-    if (!comparePropertyLists(commands, other.commands))
+    if (!comparePropertyLists(coreCommands, other.coreCommands))
       return false;
     if (!stringArrayPropertyMatch(labels, other.labels))
       return false;
@@ -183,16 +183,16 @@ public class DeviceProfile extends DescribedObject implements Serializable {
   @Override
   public String toString() {
     return "DeviceProfile [name=" + name + ", manufacturer=" + manufacturer + ", model=" + model
-        + ", labels=" + Arrays.toString(labels) + ", objects=" + deviceResources + ", commands="
-        + commands + ", resources=" + resources + "]";
+        + ", labels=" + Arrays.toString(labels) + ", deviceResources=" + deviceResources + ", deviceCommands="
+        + deviceCommands + ", coreCommands=" + coreCommands + "]";
   }
 
-  public List<ProfileResource> getResources() {
-    return resources;
+  public List<ProfileResource> getDeviceCommands() {
+    return deviceCommands;
   }
 
-  public void setResources(List<ProfileResource> resources) {
-    this.resources = resources;
+  public void setDeviceCommands(List<ProfileResource> deviceCommands) {
+    this.deviceCommands = deviceCommands;
   }
 
 }

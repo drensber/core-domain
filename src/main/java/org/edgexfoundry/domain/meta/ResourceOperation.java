@@ -28,7 +28,6 @@ public class ResourceOperation {
   private String index;
   private String operation;
   private String object;
-  private String property;
   private String parameter;
   private String resource;
   private List<String> secondary = new ArrayList<>();
@@ -39,7 +38,6 @@ public class ResourceOperation {
   public ResourceOperation(String operation, String object) {
     this.operation = operation;
     this.object = object;
-    this.property = "value";
     this.parameter = object;
     this.index = "1";
   }
@@ -60,14 +58,6 @@ public class ResourceOperation {
     this.object = object;
   }
 
-  public String getProperty() {
-    return property;
-  }
-
-  public void setProperty(String property) {
-    this.property = property;
-  }
-
   public String getParameter() {
     return parameter;
   }
@@ -86,8 +76,8 @@ public class ResourceOperation {
 
   @Override
   public String toString() {
-    return "ResourceOperation [operation=" + operation + ", object=" + object + ", property="
-        + property + ", parameter=" + parameter + ", mappings=" + mappings + ", index=" + index
+    return "ResourceOperation [operation=" + operation + ", object=" + object +  ", parameter=" + parameter
+	+ ", mappings=" + mappings + ", index=" + index
         + "]";
   }
 
