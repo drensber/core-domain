@@ -20,11 +20,8 @@ package org.edgexfoundry.domain.meta;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.edgexfoundry.domain.common.BaseObject;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document
 @SuppressWarnings("serial")
 public class Schedule extends BaseObject {
 
@@ -32,7 +29,6 @@ public class Schedule extends BaseObject {
   public static final String[] DATETIME_FORMATS = {"yyyyMMdd'T'HHmmss"};
 
   // non-database identifier for a schedule- must be unique
-  @Indexed(unique = true)
   private String name;
 
   // Start time in ISO 8601 format YYYYMMDD'T'HHmmss

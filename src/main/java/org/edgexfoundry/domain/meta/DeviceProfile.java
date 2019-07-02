@@ -25,16 +25,11 @@ import java.util.List;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.edgexfoundry.domain.common.DescribedObject;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 @SuppressWarnings("serial")
 public class DeviceProfile extends DescribedObject implements Serializable {
 
   // non-database identifier for a device profile must be unique
-  @Indexed(unique = true)
   private String name;
 
   // manufacture of the device
@@ -59,7 +54,6 @@ public class DeviceProfile extends DescribedObject implements Serializable {
 
   // list of commands to get/put information from the associated devices of
   // this profile type
-  @DBRef
   private List<Command> coreCommands;
 
   public String getName() {

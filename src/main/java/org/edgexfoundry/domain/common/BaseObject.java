@@ -21,9 +21,6 @@ package org.edgexfoundry.domain.common;
 import java.io.Serializable;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
 
 @SuppressWarnings("serial")
 public abstract class BaseObject implements Serializable, Comparable<BaseObject> {
@@ -33,15 +30,12 @@ public abstract class BaseObject implements Serializable, Comparable<BaseObject>
   // devices to be in different time zones than the core.
 
   // the database generated identifier
-  @Id
   private String id;
 
   // the timestamp of when the record was added to the database
-  @CreatedDate
   private long created;
 
   // the timestamp of the last modification to the record
-  @LastModifiedDate
   private long modified;
 
   // the timestamp of when the record was created

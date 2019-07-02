@@ -23,14 +23,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 @SuppressWarnings("serial")
 public class ValueDescriptor extends DescribedObject {
 
-  @Indexed(unique = true)
   // non-database identifier for a value descriptor- must be unique
   private String name;
 

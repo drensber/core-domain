@@ -19,9 +19,7 @@
 package org.edgexfoundry.domain.meta;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 @SuppressWarnings("serial")
 public class DeviceService extends Service {
 

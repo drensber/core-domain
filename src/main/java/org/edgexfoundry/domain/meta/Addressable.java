@@ -22,15 +22,11 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.edgexfoundry.domain.common.BaseObject;
 import org.edgexfoundry.domain.common.HTTPMethod;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 @SuppressWarnings("serial")
 public class Addressable extends BaseObject {
 
   // non-database identifier for a addressable - must be unique
-  @Indexed(unique = true)
 
   // unique name and identifier of the addressable
   private String name;

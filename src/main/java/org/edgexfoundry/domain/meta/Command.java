@@ -23,9 +23,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.edgexfoundry.domain.common.BaseObject;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 @SuppressWarnings("serial")
 public class Command extends BaseObject {
 

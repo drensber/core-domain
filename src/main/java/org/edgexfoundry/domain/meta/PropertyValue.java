@@ -274,7 +274,7 @@ public class PropertyValue {
 
   @Override
   public String toString() {
-    return "PropertyValue{" + "readWrite:" + readWrite + ", minimum:" + minimum + ", maximum:"
+    return "PropertyValue{" + "type:" + type + ", readWrite:" + readWrite + ", minimum:" + minimum + ", maximum:"
         + maximum + ", defaultValue:" + defaultValue + ", size:" + size + ", precision:" + precision
         + ", word:" + word + ", LSB:" + LSB + ", mask:" + mask + ", shift:" + shift + ", scale:"
         + scale + ", offset:" + offset + ", base:" + base + ", assertion:" + assertion + ", signed:"

@@ -23,16 +23,11 @@ import java.util.Map;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.edgexfoundry.domain.common.BaseObject;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 @SuppressWarnings("serial")
 public class ProvisionWatcher extends BaseObject {
 
   // non-database identifier for a provision watcher - must be unique
-  @Indexed(unique = true)
 
   // unique name and identifier of the addressable
   private String name;
@@ -43,12 +38,10 @@ public class ProvisionWatcher extends BaseObject {
    */
   private Map<String, String> identifiers;
 
-  @DBRef
   // device profile that should be applied to the devices available at the
   // identifier addresses
   private DeviceProfile profile;
 
-  @DBRef
   // device service that owns the watcher
   private DeviceService service;
 

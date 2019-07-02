@@ -25,11 +25,8 @@ import java.util.List;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.edgexfoundry.domain.common.BaseObject;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @SuppressWarnings("serial")
-@Document
 public class Event extends BaseObject implements Serializable {
 
   // timestamp of when pushed or exported out of EdgeX. Set to 0 if not pushed
@@ -41,7 +38,6 @@ public class Event extends BaseObject implements Serializable {
   // downstream systems must know what to look for
   private String device;
 
-  @DBRef
   private List<Reading> readings;
 
   public Event(String device, List<Reading> readings) {

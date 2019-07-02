@@ -18,8 +18,6 @@
 
 package org.edgexfoundry.domain.meta;
 
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.edgexfoundry.domain.common.DescribedObject;
 
@@ -27,7 +25,6 @@ import org.edgexfoundry.domain.common.DescribedObject;
 public abstract class Service extends DescribedObject implements Asset {
 
   // non-database identifier for a device service must be unique
-  @Indexed(unique = true)
   private String name;
 
   // time in milliseconds that the device last provided any feedback or
@@ -46,7 +43,6 @@ public abstract class Service extends DescribedObject implements Asset {
 
   // address (MQTT topic, HTTP address, serial bus, etc.) for reaching the
   // service
-  @DBRef
   private Addressable addressable;
 
   public Addressable getAddressable() {

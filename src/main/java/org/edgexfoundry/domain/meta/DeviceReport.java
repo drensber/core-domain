@@ -22,15 +22,11 @@ import java.util.Arrays;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.edgexfoundry.domain.common.BaseObject;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 @SuppressWarnings("serial")
 public class DeviceReport extends BaseObject {
 
   // non-database identifier for a device report - must be unique
-  @Indexed(unique = true)
   private String name;
 
   // associated device name - should be a valid and unique device name

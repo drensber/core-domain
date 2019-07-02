@@ -18,25 +18,19 @@
 
 package org.edgexfoundry.domain.meta;
 
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.edgexfoundry.domain.common.BaseObject;
 
-@Document
 @SuppressWarnings("serial")
 public class ScheduleEvent extends BaseObject {
 
   // non-database identifier for a schedule event - must be unique
-  @Indexed(unique = true)
   private String name;
 
   // name to associated owning schedule
   private String schedule;
 
   // address (MQTT topic, HTTP address, serial bus, etc.) for the action (can be empty)
-  @DBRef
   private Addressable addressable;
 
   // json body for parameters

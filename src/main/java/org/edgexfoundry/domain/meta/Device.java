@@ -22,11 +22,7 @@ import java.util.Arrays;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.edgexfoundry.domain.common.DescribedObject;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
 @SuppressWarnings("serial")
 public class Device extends DescribedObject implements Asset {
 
@@ -38,7 +34,6 @@ public class Device extends DescribedObject implements Asset {
   // containers and use a similar approach.
 
   // non-database identifier for a device - must be unique
-  @Indexed(unique = true)
   private String name;
 
   // administrative state - either locked or unlocked (as reported by devices
@@ -65,11 +60,9 @@ public class Device extends DescribedObject implements Asset {
   private Object location;
 
   // owning device service (each device can have only one owning service)
-  @DBRef
   private DeviceService service;
 
   // associated device profile that describes the device
-  @DBRef
   private DeviceProfile profile;
 
   @Override
