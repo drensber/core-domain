@@ -28,8 +28,11 @@ public class ResourceOperation {
   private String index;
   private String operation;
   private String object;
+  private String deviceResource;    
   private String parameter;
   private String resource;
+  private String deviceCommand;
+  private boolean isValidated;
   private List<String> secondary = new ArrayList<>();
   private Map<String, String> mappings = new HashMap<>();
 
@@ -104,5 +107,31 @@ public class ResourceOperation {
   public void setResource(String resource) {
     this.resource = resource;
   }
+
+  public String getDeviceResource() {
+    return deviceResource;
+  }
+
+  public void setDeviceResource(String deviceResource) {
+    this.deviceResource = deviceResource;
+  }
+
+  public String getDeviceCommand() {
+    return deviceCommand;
+  }
+
+  public void setDeviceCommand(String deviceCommand) {
+    this.deviceCommand = deviceCommand;
+  }
+
+  public boolean getIsValidated() {
+    return isValidated;
+  }
+
+  public void setIsValidated(boolean isValidated) {
+    this.isValidated = isValidated;
+  }
+    
+    
 
 }

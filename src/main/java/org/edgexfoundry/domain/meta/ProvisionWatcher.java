@@ -37,7 +37,8 @@ public class ProvisionWatcher extends BaseObject {
    * for (00-05-1B-A1-99-99, 10.0.0.1,...)
    */
   private Map<String, String> identifiers;
-
+  private Map<String, String[]> blockingIdentifiers;
+    
   // device profile that should be applied to the devices available at the
   // identifier addresses
   private DeviceProfile profile;
@@ -45,6 +46,8 @@ public class ProvisionWatcher extends BaseObject {
   // device service that owns the watcher
   private DeviceService service;
 
+  private AdminState adminState;  
+    
   // operational state - either enabled or disabled
   private OperatingState operatingState = OperatingState.ENABLED;
 
@@ -78,6 +81,16 @@ public class ProvisionWatcher extends BaseObject {
     this.identifiers = identifiers;
   }
 
+  public Map<String, String[]> getBlockingIdentifiers() {
+    if (blockingIdentifiers == null)
+      this.blockingIdentifiers = new HashMap<>();
+    return blockingIdentifiers;
+  }
+
+  public void setBlockingIdentifiers(Map<String, String[]> blockingIdentifiers) {
+    this.blockingIdentifiers = blockingIdentifiers;
+  }
+    
   public DeviceProfile getProfile() {
     return profile;
   }
@@ -103,6 +116,14 @@ public class ProvisionWatcher extends BaseObject {
 
   public void setService(DeviceService service) {
     this.service = service;
+  }
+
+  public AdminState getAdminState() {
+    return adminState;
+  }
+
+  public void setAdminState(AdminState adminState) {
+    this.adminState = adminState;
   }
 
   public OperatingState getOperatingState() {
